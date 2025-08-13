@@ -4,7 +4,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
-from sys import *
+import sys
 BLACK = (0,0,0)
 updateable = pygame.sprite.Group()
 drawable = pygame.sprite.Group()
@@ -32,6 +32,7 @@ def main():
 
         updateable.update(delta_time)
         for asteroidasos in asteroids:
+            
             if asteroidasos.collision(my_player):
                 print("Game over!")
                 sys.exit(["Game over!"])
@@ -39,7 +40,7 @@ def main():
         for asteroidasos in asteroids:   
             for balitas in shots:
                 if asteroidasos.collision(balitas):
-                    asteroidasos.kill()
+                    asteroidasos.split()
 
         for item in drawable:
             item.draw(screen)
